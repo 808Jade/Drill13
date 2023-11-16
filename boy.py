@@ -49,8 +49,6 @@ def time_out(e):
 # time_out = lambda e : e[0] == 'TIME_OUT'
 
 
-
-
 # Boy Run Speed
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
 RUN_SPEED_KMPH = 20.0  # Km / Hour
@@ -63,8 +61,8 @@ TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
-class Idle:
 
+class Idle:
     @staticmethod
     def enter(boy, e):
         if boy.action == 0:
@@ -83,7 +81,6 @@ class Idle:
     @staticmethod
     def draw(boy):
         boy.image.clip_draw(int(boy.frame) * 100, boy.action * 100, 100, 100, boy.x, boy.y)
-
 
 
 class RunRight:
@@ -132,6 +129,7 @@ class RunRightUp:
     def draw(boy):
         boy.image.clip_draw(int(boy.frame) * 100, boy.action  * 100, 100, 100, boy.x, boy.y)
 
+
 class RunRightDown:
     @staticmethod
     def enter(boy, e):
@@ -154,8 +152,6 @@ class RunRightDown:
     @staticmethod
     def draw(boy):
         boy.image.clip_draw(int(boy.frame) * 100, boy.action  * 100, 100, 100, boy.x, boy.y)
-
-
 
 
 class RunLeft:
@@ -226,8 +222,6 @@ class RunLeftDown:
     @staticmethod
     def draw(boy):
         boy.image.clip_draw(int(boy.frame) * 100, boy.action  * 100, 100, 100, boy.x, boy.y)
-
-
 
 
 class RunUp:
@@ -318,12 +312,6 @@ class StateMachine:
         self.cur_state.draw(self.boy)
 
 
-
-
-
-
-
-
 class Boy:
     def __init__(self):
         self.x, self.y = 1280 // 2, 1024 // 2
@@ -355,6 +343,3 @@ class Boy:
     def handle_collision(self, group, other):
         if group == 'boy:ball':
             self.ball_count += 1
-
-
-
